@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Widget } from '@fem/api-interfaces';
 import { WidgetsService } from '@fem/core-data';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'fem-root',
@@ -7,8 +9,9 @@ import { WidgetsService } from '@fem/core-data';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  widgets$: Observable<Widget[]>;
   constructor(private widgetsService: WidgetsService) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+    this.widgets$ = this.widgetsService.all();
   }
 }

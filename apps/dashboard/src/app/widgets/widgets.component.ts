@@ -27,53 +27,53 @@ export class WidgetsComponent implements OnInit {
   constructor(private widgetsService: WidgetsService) {}
 
   ngOnInit(): void {
-    this.reset();
+    // this.reset();
   }
 
-  reset() {
-    this.loadWidgets();
-    this.selectWidget(null);
-  }
+  // reset() {
+  //   this.loadWidgets();
+  //   this.selectWidget(null);
+  // }
 
-  resetForm() {
-    this.selectedWidget = emptyWidget;
-  }
+  // resetForm() {
+  //   this.selectedWidget = emptyWidget;
+  // }
 
-  selectWidget(widget: Widget) {
-    this.selectedWidget = widget;
-  }
+  // selectWidget(widget: Widget) {
+  //   this.selectedWidget = widget;
+  // }
 
-  loadWidgets() {
-    this.widgets$ = this.widgetsService.all();
-  }
+  // loadWidgets() {
+  //   this.widgets$ = this.widgetsService.all();
+  // }
 
-  saveWidget(widget: Widget) {
-    if (widget.id) {
-      this.updateWidget(widget);
-    } else {
-      this.createWidget(widget);
-    }
-  }
+  // saveWidget(widget: Widget) {
+  //   if (widget.id) {
+  //     this.updateWidget(widget);
+  //   } else {
+  //     this.createWidget(widget);
+  //   }
+  // }
 
-  createWidget(widget: Widget) {
-    const newWidget = Object.assign({}, widget, { id: this.getRandomID() });
-    this.widgets = [...this.widgets, newWidget];
-    this.resetForm();
-  }
+  // createWidget(widget: Widget) {
+  //   const newWidget = Object.assign({}, widget, { id: this.getRandomID() });
+  //   this.widgets = [...this.widgets, newWidget];
+  //   this.resetForm();
+  // }
 
-  updateWidget(widget: Widget) {
-    this.widgets = this.widgets.map((w) => {
-      return widget.id === w.id ? widget : w;
-    });
-    this.resetForm();
-  }
+  // updateWidget(widget: Widget) {
+  //   this.widgets = this.widgets.map((w) => {
+  //     return widget.id === w.id ? widget : w;
+  //   });
+  //   this.resetForm();
+  // }
 
-  deleteWidget(widget: Widget) {
-    this.widgets = this.widgets.filter((w) => widget.id !== w.id);
-    this.resetForm();
-  }
+  // deleteWidget(widget: Widget) {
+  //   this.widgets = this.widgets.filter((w) => widget.id !== w.id);
+  //   this.resetForm();
+  // }
 
-  private getRandomID() {
-    return Math.random().toString(36).substring(7);
-  }
+  // private getRandomID() {
+  //   return Math.random().toString(36).substring(7);
+  // }
 }

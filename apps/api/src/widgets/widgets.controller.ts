@@ -1,15 +1,14 @@
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { WidgetsService } from './widgets.service';
-import { CreateWidgetDto } from './dto/create-widget.dto';
-import { UpdateWidgetDto } from './dto/update-widget.dto';
+import { Widget } from './entities/widget.entity';
 
 @Controller('widgets')
 export class WidgetsController {
   constructor(private readonly widgetsService: WidgetsService) {}
 
   @Post()
-  create(@Body() createWidgetDto: CreateWidgetDto) {
-    return this.widgetsService.create(createWidgetDto);
+  create(@Body() widget: Widget) {
+    return this.widgetsService.create(widget);
   }
 
   @Get()
@@ -19,12 +18,12 @@ export class WidgetsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.widgetsService.findOne(+id);
+    return this.widgetsService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateWidgetDto: UpdateWidgetDto) {
-    return this.widgetsService.update(+id, updateWidgetDto);
+  update(@Param('id') id: string, @Body() widget: Widget) {
+    return this.widgetsService.update(id, Widget);
   }
 
   @Delete(':id')
